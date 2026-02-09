@@ -1,4 +1,4 @@
-import { capitalize, reverseString } from "./testing-functions"
+import { capitalize, reverseString, Calculator } from "./testing-functions"
 
 //Capitalise string test
 test('is capitalised', () => {
@@ -43,4 +43,40 @@ test("doesn't reverse number", () => {
 
 test('do reverse string numbers', () => {
     expect(reverseString("1234")).toBe("4321")
+})
+
+//calculator
+const calc = new Calculator()
+
+test('addition', () => {
+    expect(calc.add(2, 2)).toBe(4)
+    expect(calc.add(3, 5)).toBe(8)
+})
+
+test('subtraction', () => {
+    expect(calc.subtract(5, 3)).toBe(2)
+    expect(calc.subtract(10, 5)).toBe(5)
+    expect(calc.subtract(2, 10)).toBe(-8)
+})
+
+test('divide', () => {
+    expect(calc.divide(2, 2)).toBe(1)
+    expect(calc.divide(10, 2)).toBe(5)
+    expect(calc.divide(3, 2)).toBe(1.5)
+})
+
+test('divide should be max 2 decimals', () => {
+    expect(calc.divide(10, 3)).toBe(3.33)
+})
+
+test('multiply', () => {
+    expect(calc.multiply(2, 5)).toBe(10)
+    expect(calc.multiply(50, 100)).toBe(5000)
+})
+
+//To Test a exception the function that throws an expcetion needs to invoked within a function
+test('check non number values', () => {
+    expect(() => calc.add(1, "2")).toThrow(TypeError)
+    expect(() => calc.add(10, null)).toThrow(TypeError)
+    expect(() => calc.add(1, four)).toThrow(ReferenceError)
 })
