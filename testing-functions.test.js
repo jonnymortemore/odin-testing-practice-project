@@ -100,4 +100,12 @@ test('works with upper case letters', () => {
 test('works with spaces, punctuation and numbers', () => {
     expect(caesarCipher('Hello, World!', 3)).toBe('Khoor, Zruog!')
     expect(caesarCipher('H3llo, W0rld!', 3)).toBe('K3oor, Z0uog!')
+    
+})
+
+test('check no errors on none string values', () => {
+    expect(caesarCipher(1234)).toBe(1234)
+    expect(caesarCipher(null)).toBe(null)
+    //when checking comparisons of objects use "toEqual" -> this checks values are the same but not that they are the same instance of the array object in memory
+    expect(caesarCipher(["1", "2", 3])).toEqual(["1", "2", 3])
 })

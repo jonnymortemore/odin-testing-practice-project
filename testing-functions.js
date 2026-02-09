@@ -56,6 +56,10 @@ export class Calculator {
 }
 
 export function caesarCipher(string, cipher) {
+    // return string if it's not a string
+    if(typeof string !== "string") {
+        return string
+    }
     const cipherCode = buildCipherDict(cipher)
     //split the string into an array
     const stringArray = string.split("")
