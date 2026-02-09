@@ -1,4 +1,4 @@
-import { capitalize, reverseString, Calculator, caesarCipher} from "./testing-functions"
+import { capitalize, reverseString, Calculator, caesarCipher, analyseArray} from "./testing-functions"
 
 //Capitalise string test
 test('is capitalised', () => {
@@ -74,7 +74,7 @@ test('multiply', () => {
     expect(calc.multiply(50, 100)).toBe(5000)
 })
 
-//To Test a exception the function that throws an expcetion needs to invoked within a function
+//To Test a exception the function that throws an exception needs to invoked within a function
 test('check non number values', () => {
     expect(() => calc.add(1, "2")).toThrow(TypeError)
     expect(() => calc.add(10, null)).toThrow(TypeError)
@@ -82,7 +82,7 @@ test('check non number values', () => {
 })
 
 
-//Caeser Cipher
+//Caesar Cipher
 
 test('works as intended', () => {
     expect(caesarCipher('abc', 1)).toBe('bcd')
@@ -108,4 +108,15 @@ test('check no errors on none string values', () => {
     expect(caesarCipher(null)).toBe(null)
     //when checking comparisons of objects use "toEqual" -> this checks values are the same but not that they are the same instance of the array object in memory
     expect(caesarCipher(["1", "2", 3])).toEqual(["1", "2", 3])
+})
+
+
+//Analyse Array
+test('main functionality works', () => {
+     expect(analyseArray([1,8,3,4,2,6])).toBe({
+        average: 4,
+        min: 1,
+        max: 8,
+        length: 6
+    })
 })

@@ -132,3 +132,7 @@ export function caesarCipher(string, cipher) {
         return cipherCode
     }
 }
+
+export function analyseArray(array) {
+
+}
