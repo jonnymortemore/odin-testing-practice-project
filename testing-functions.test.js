@@ -112,11 +112,18 @@ test('check no errors on none string values', () => {
 
 
 //Analyse Array
+//Have to use when "toEqual" -> this checks values in an object rather than if it's the same object in memory
 test('main functionality works', () => {
-     expect(analyseArray([1,8,3,4,2,6])).toBe({
+     expect(analyseArray([1,8,3,4,2,6])).toEqual({
         average: 4,
         min: 1,
         max: 8,
         length: 6
+    })
+     expect(analyseArray([2,3,4,5,6,7,8])).toEqual({
+        average: 5,
+        min: 2,
+        max: 8,
+        length: 7
     })
 })

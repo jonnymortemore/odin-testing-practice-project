@@ -135,4 +135,35 @@ export function caesarCipher(string, cipher) {
 
 export function analyseArray(array) {
 
+    return {
+        average: average(array),
+        min: min(array),
+        max: max(array),
+        length: length(array)
+    }
+    
+    function average(array) {
+        //reduce - https://www.w3schools.com/jsref/jsref_reduce.asp
+        //reduce tracks previously calculated values looped on an iterative like an array
+        //this can be used to easily sum values of an array without a loop
+        //array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+        // You don't need to add the inputs to the passed function (see just "sum")
+        const sum = (total, value) => {
+            return total + value
+        }
+        const total = array.reduce(sum)
+        return total / array.length
+    }
+
+    function min(array) {
+        return Math.min(...array)
+    }
+
+    function max(array) {
+        return Math.max(...array)
+    }
+
+    function length(array) {
+        return array.length
+    }
 }
