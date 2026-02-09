@@ -1,4 +1,4 @@
-import { capitalize, reverseString, Calculator } from "./testing-functions"
+import { capitalize, reverseString, Calculator, caesarCipher} from "./testing-functions"
 
 //Capitalise string test
 test('is capitalised', () => {
@@ -79,4 +79,25 @@ test('check non number values', () => {
     expect(() => calc.add(1, "2")).toThrow(TypeError)
     expect(() => calc.add(10, null)).toThrow(TypeError)
     expect(() => calc.add(1, four)).toThrow(ReferenceError)
+})
+
+
+//Caeser Cipher
+
+test('works as intended', () => {
+    expect(caesarCipher('abc', 1)).toBe('bcd')
+    expect(caesarCipher('xyz', 3)).toBe('abc')
+})
+
+test('works with negative cipher', () => {
+    expect(caesarCipher('abc', -3)).toBe('xyz')
+})
+
+test('works with upper case letters', () => {
+    expect(caesarCipher('HeLLo', 3)).toBe('KhOOr')
+})
+
+test('works with spaces, punctuation and numbers', () => {
+    expect(caesarCipher('Hello, World!', 3)).toBe('Khoor, Zruog!')
+    expect(caesarCipher('H3llo, W0rld!', 3)).toBe('K3oor, Z0uog!')
 })
